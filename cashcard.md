@@ -40,5 +40,17 @@ cd cashcard
 ```
 4. Done
 
+JSON & Data Contracts
+JSON -> Javascript Object Notation
+Providing a data interchange format that represents particular information of  object -> easy to use and understand
 
+YAML & XML
+Compare to YAML, JSON is easy to user and takes less space.
+Further more, JSON works well with Javascript based application
+
+JSON Contract
+It is a formal agreement between a service & client to communicates the data to be exchnaged
+This characteristics allows server and client to use different language but have to have same contracts
+This is important since it defines behavior of a REST API and provides specific details of serialized (or deserialized) for each commands and parameter being exchanged.
+Also, it is understandable for both developer and REST API.
 
