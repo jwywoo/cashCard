@@ -58,6 +58,13 @@ Also, it is understandable for both developer and REST API.
 
 ## 20200210
 ## Testing
+### Importance of Test Driven Development(TDD)
+1. By asserting expected behaviour we can build project based on what we want than what the system can do already.
+2. By building test first we can implement with minimum code.
+
+### Testing Pyramid
+There are different types of test for different level of system. Cost of running it and maintaining it varies by the test.
+Also, different types of test can affect correctness of tests.
 
 To build test driven Spring Boot project. it is important to start with test file.
 ### Adding Test
