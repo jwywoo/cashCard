@@ -1,4 +1,4 @@
-## 20220209
+## 20230209
 ## Spring Boot : Introduction to RESTful web service
 
 Building an web app that handles allowance of user's kids
@@ -56,7 +56,7 @@ This characteristics allows server and client to use different language but have
 This is important since it defines behavior of a REST API and provides specific details of serialized (or deserialized) for each commands and parameter being exchanged.
 Also, it is understandable for both developer and REST API.
 
-## 20200210
+## 20230210
 ## Testing
 ### Importance of Test Driven Development(TDD)
 1. By asserting expected behaviour we can build project based on what we want than what the system can do already.
@@ -97,3 +97,58 @@ To build test driven Spring Boot project. it is important to start with test fil
    ```
 4. It will build the test you created and whenever you want to test you got to do it like this.
 5. However, your test is failed it won't build then you have a issue with your code, but if all test is passed it will build it.
+
+## 20230215
+### Spring Annotations & Component Scan
+
+Spring Beans: It is an object created by Spring that is stored in IoC container. This object can be injected any code like an object in Java.
+
+Annotations: It is one of the ways to create Spring Beans. At the runtime Spring during Component Scan Phase, Spring use this annotation to create Beans.
+
+### How Spring Web Handles Request
+All the request given to Spring Web is handled by Controller class that has `@RestController` annotation.
+```
+@RestController
+public class CashCardController {
+}
+```
+Further more controller class can handle different methods by creating designated functions.
+To handle `GET` function should have `@GetMapping` annotation. 
+```
+@GetMapping("/cashcards/{requestId}")
+public CashCard findById(Long requestId) {
+}
+```
+`{requestId}` is one of url parameter that supports the function to process request.
+By using `@PathVariable` annotation we can make function to use  `{reqeustId}`. But the name we use for the annotation got to be equal to the name of the parameter.
+
+```
+@GetMapping("/cashcards/{requestId}")
+public CashCard findById(@PathVariable Long requestID) {
+}
+```
+
+After this we need to return response since it's been requested.
+If we want to send 200 response which is success we need to use `ResponseEntity` builtin function.
+```
+@RestController
+public class CashCardRestController {
+   @GetMapping("/cashcards/{requestId}")
+   public ResponseEntity<CashCard> findById(@PathVariable Long requestID) {
+         CashCard result = /* We are going to create a way to return matching object */
+         return ResponseEntity.ok(result);
+   }
+}
+```
+
+#### Be aware of the changes of data type also the order of annotations
+
+For the summary, `@RestConller` show this class handles request.
+
+`@GetMapping` shows a function of the class handles `GET` method.
+
+`@PathVariable` handles parameter that can be used to process the request for the function.
+
+`ResponseEntity` returns status whether that request is well handled or not.
+
+
