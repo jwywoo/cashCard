@@ -38,12 +38,15 @@ class CashCardApplicationTests {
 //	}
 	@Test
 	void shouldReturnCashCardWhenDataIsSaved() {
+		// Making a request GET and will return ResponseEntity
 		ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/99", String.class);
-
+		// Checking whether response is http Okay
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-
+		// Converting String to Json objects
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
+		// Checking id - current return is {} so test will fail
 		Number id = documentContext.read("$.id");
+		// 
 		assertThat(id).isNotNull();
 
 	}
