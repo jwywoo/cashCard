@@ -19,13 +19,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 //
 //}
 
+// Annotation to start Spring Boot application and make it available for the test
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CashCardApplicationTests {
+	// Injecting a test helper to create HTTP requests (for local)
 	@Autowired
 	TestRestTemplate restTemplate;
 
+
 	@Test
 	void shouldReturnCashCardWhenDataIsSaved() {
+		// Making a request GET and will return ResponseEntity
 		ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/99", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
