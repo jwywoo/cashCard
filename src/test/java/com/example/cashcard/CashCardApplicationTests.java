@@ -46,8 +46,10 @@ class CashCardApplicationTests {
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
 		// Checking id - current return is {} so test will fail
 		Number id = documentContext.read("$.id");
-		// 
-		assertThat(id).isNotNull();
+		Double amount = documentContext.read("$.amount");
+
+		assertThat(id).isEqualTo(99);
+		assertThat(amount).isEqualTo(123.45);
 
 	}
 }
