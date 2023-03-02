@@ -154,4 +154,23 @@ For the summary, `@RestConller` show this class handles request.
 ## 20230301
 Repositories and Spring Data
 To add data we need repositories(Database)
+1. First you need to add dependencies -> jdbc
+```
+   // Add the two dependencies below at build.gradle dependencies
+   implementation 'org.springframework.data:spring-data-jdbc'
+   // This allows using h2 for only test (it's testImplementation)
+   testImplementation 'com.h2database:h2'
+```
+2. `src/main/java/example/cashcard/CashCardRepository.java` and have extension called `extend CrudRepository`
+   
+   ```
+   package example.cashcard;
+
+   import org.springframework.data.repository.CrudRepository;
+
+   public interface CashCardRepository extends CrudRepository {
+   }
+   ```
+   
+3. 
 
